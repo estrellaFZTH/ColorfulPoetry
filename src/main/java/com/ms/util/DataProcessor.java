@@ -18,9 +18,9 @@ public class DataProcessor {
   public static void main(String[] args) throws IOException {
 //    String pathName = "doc/PingShuiYun.txt";
 //    System.out.println(processor(pathName));
-      File file = new File("doc");
+      File file = new File("src/main/resources/lib/doc");
       if (!file.exists()) {
-          log.error(file + "is not found.");
+          log.error(file + " is not found.");
           return;
       }
 
@@ -28,7 +28,7 @@ public class DataProcessor {
       for (int i = 0; i < files.length; i++) {
           File f = files[i];
           if (f.isFile()) {
-              Map<String, List<ToneTypeAndPart>> processor = DataProcessor.processor("doc/" + f.getName());
+              Map<String, List<ToneTypeAndPart>> processor = DataProcessor.processor("src/doc/" + f.getName());
               System.out.println(processor);
           } else {
               log.error(f + "is not a dir.");

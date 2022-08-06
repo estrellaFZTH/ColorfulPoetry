@@ -225,17 +225,23 @@
 
     </dependencies>
 
-
-
-    <!--    <developers>-->
-    <!--        <developer>-->
-    <!--            <name>com.ms</name>-->
-    <!--            <id>estrella</id>-->
-    <!--            <roles>-->
-    <!--                <role>Developer</role>-->
-    <!--            </roles>-->
-    <!--            <timezone>+8</timezone>-->
-    <!--        </developer>-->
-    <!--    </developers>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    <developers>
+        <developer>
+            <name>com.ms</name>
+            <id>estrella</id>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
 
 </project>
