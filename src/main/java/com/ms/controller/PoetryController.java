@@ -13,10 +13,7 @@ import com.ms.model.response.PoteryResponse.Word;
 import com.ms.util.ChineseAndEnglishUtils;
 import com.ms.util.DictCache;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +29,7 @@ import java.util.Map;
 public class PoetryController {
 
 
+    @CrossOrigin
     @PostMapping("/poetry")
     public ResultData<PoteryResponse> Poetry(@RequestBody PoteryRequest poteryRequest){
         PoteryResponse poteryResponse = new PoteryResponse();
