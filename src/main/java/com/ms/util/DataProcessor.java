@@ -57,7 +57,7 @@ public class DataProcessor {
                   char ch = str.charAt(i);
                   String st = list.get(0);
                   ToneTypeAndPart toneTypeAndPart = new ToneTypeAndPart();
-                  if(st.substring(0, 2).equals("上平") || st.equals("下平")) {
+                  if(st.substring(0, 2).equals("上平") || st.equals("下平") || st.equals("平声")) {
                       toneTypeAndPart.setToneType(ToneEnum.LEVEL_TONE.getType());
                   } else {
                       toneTypeAndPart.setToneType(ToneEnum.OBLIQUE_TONE.getType());

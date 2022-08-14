@@ -12,25 +12,32 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry
-                        .addMapping("/**")
-                        .allowedOrigins("http://www.estre.site") //
-                        // 允许跨域的域名
-                        .allowedOrigins("*") // 允许所有域
-                        .allowedMethods("*") // 允许任何方法（post、get等）
-                        .allowedHeaders("*") // 允许任何请求头
-                        .allowCredentials(true) // 允许证书、cookie
-                        .exposedHeaders(HttpHeaders.SET_COOKIE)
-                        .maxAge(3600L); // maxAge(3600)表明在3600秒内，不需要再发送预检验请求，可以缓存该结果
-            }
-        };
+    @Override
+    public void addCorsMappings( CorsRegistry registry) {
+        registry.addMapping("/**")//允许请求路径
+                .allowedOrigins("*")//表示允许所有网址发起跨域请求
+                .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")//表示允许跨域请求的方法
+                .maxAge(3600)//表示在3600秒内不需要再发送预校验请求
+                .allowCredentials(true);//允许客户端携带验证信息，即允许携带cookie
     }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry
+//                        .addMapping("/**")
+//                        .allowedOrigins("http://www.estre.site") //
+//                        // 允许跨域的域名
+//                        .allowedOrigins("*") // 允许所有域
+//                        .allowedMethods("*") // 允许任何方法（post、get等）
+//                        .allowedHeaders("*") // 允许任何请求头
+//                        .allowCredentials(true) // 允许证书、cookie
+//                        .exposedHeaders(HttpHeaders.SET_COOKIE)
+//                        .maxAge(3600L); // maxAge(3600)表明在3600秒内，不需要再发送预检验请求，可以缓存该结果
+//            }
+//        };
+//    }
     
 
 }

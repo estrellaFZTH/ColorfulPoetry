@@ -25,7 +25,7 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class PoetryController {
 
 
@@ -37,6 +37,7 @@ public class PoetryController {
         poteryResponse.setAuthor(poteryRequest.getAuthor());
         if (poteryRequest.getType() == null) {
 //            return new ColorfulPoetryExceptionWithRetData(ResultCodeEnum.PARAM_ERROR, "韵表选择不能为空");
+            log.error("韵表选择不能为空");
             return ResultBuilder.buildErrorResultByEnum(ResultCodeEnum.PARAM_ERROR, "韵表选择不能为空");
         }
         String dictName = "";
@@ -50,8 +51,9 @@ public class PoetryController {
         Map<String, List<ToneTypeAndPart>> dictMap = DictCache.PhonologyMap.get(dictName);
         List<List<Word>> resContent = new ArrayList<>();
         List<String> contentList = poteryRequest.getContent();
-        if(contentList.size() == 0) {
+        if(contentList == null || contentList.size() == 0) {
 //            throw new ColorfulPoetryExceptionWithRetData(ResultCodeEnum.PARAM_ERROR, "诗歌正文不能为空");
+            log.error("诗歌正文不能为空");
             return ResultBuilder.buildErrorResultByEnum(ResultCodeEnum.PARAM_ERROR, "诗歌正文不能为空");
         }
         for (String str : contentList) {
